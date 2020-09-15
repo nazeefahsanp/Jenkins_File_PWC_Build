@@ -25,7 +25,7 @@ pipeline {
   environment {
     branchName = 'master'
     targetTag = '13703'
-    originTag = '13703'
+    originTag = ''
     workingDir = 'C:\\Apps\\jenkins\\workspace\\PWC_Pipeline_Build_Dep'
   }
   parameters {
