@@ -1,9 +1,5 @@
 pipeline {
   agent any
-  parameters{
-	string(name: 'branchName', defaultValue:'master', description: 'Branch Name')
-	}
-
   stages {
     stage('Checkout') {
       steps {
@@ -13,7 +9,7 @@ pipeline {
 
     stage('Code Quality Gate') {
       steps {
-        bat(script: '%workingDir%/sonar_scanner.bat', label: 'Code Quality Gate')
+        echo 'test scan'
       }
     }
 
@@ -25,5 +21,14 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    branchName = 'master'
+    targetTag = '13672'
+    originTag = '13671'
+    workingDir = 'C:\\Apps\\jenkins\\workspace\\PWC_Pipeline_Build_Dep'
+  }
+  parameters {
+    string(name: 'branchName', defaultValue: 'master', description: 'Branch Name')
   }
 }
